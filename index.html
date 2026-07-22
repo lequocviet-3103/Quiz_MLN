@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#8fd8ff">
+  <meta name="description" content="Quiz Kinh Tế Chính Trị với giao diện bầu trời pastel dễ thương.">
+  <title>Quiz Kinh Tế Chính Trị</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sky-decor" aria-hidden="true">
+    <div class="sun"></div>
+    <div class="cloud cloud--one"><span></span><span></span></div>
+    <div class="cloud cloud--two"><span></span><span></span></div>
+    <div class="cloud cloud--three"><span></span><span></span></div>
+    <div class="cloud cloud--four"><span></span><span></span></div>
+    <div id="twinkleField" class="twinkle-field"></div>
+  </div>
+
+  <main class="app-shell">
+    <header class="hero">
+      <div class="hero__tools">
+        <div class="hero__badge"><span>✦</span> Học vui mỗi ngày</div>
+        <div class="sound-controls">
+          <button id="soundToggle" class="sound-toggle" type="button" aria-pressed="true" aria-label="Tắt âm thanh">
+            <span id="soundIcon" aria-hidden="true">🔊</span>
+            <span id="soundLabel">Âm thanh</span>
+          </button>
+          <input id="volumeControl" class="volume-control" type="range" min="0" max="100" value="65" aria-label="Điều chỉnh âm lượng nhạc nền" aria-valuetext="65%">
+        </div>
+      </div>
+      <h1>Quiz Kinh Tế <span>Chính Trị</span></h1>
+      <p>Chinh phục 12 câu hỏi cùng những vì sao!</p>
+    </header>
+
+    <section id="quizCard" class="quiz-card" aria-labelledby="questionText">
+      <div class="quiz-topbar">
+        <div class="question-count">
+          <span class="question-count__label">CÂU HỎI</span>
+          <strong><span id="currentQuestion">1</span><span class="question-count__divider">/</span><span id="totalQuestions">12</span></strong>
+        </div>
+
+        <div id="timer" class="timer" role="timer" aria-label="Còn 20 giây">
+          <svg class="timer__ring" viewBox="0 0 64 64" aria-hidden="true">
+            <circle class="timer__track" cx="32" cy="32" r="27"></circle>
+            <circle id="timerProgress" class="timer__progress" cx="32" cy="32" r="27"></circle>
+          </svg>
+          <div class="timer__content">
+            <span id="timerValue">20</span>
+            <small>GIÂY</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress" aria-label="Tiến trình bài quiz">
+        <div class="progress__labels">
+          <span>Tiến trình</span>
+          <span id="progressPercent">8%</span>
+        </div>
+        <div class="progress__track">
+          <div id="progressBar" class="progress__bar"></div>
+        </div>
+      </div>
+
+      <div class="question-area">
+        <div class="question-icon" aria-hidden="true">☁</div>
+        <h2 id="questionText"></h2>
+      </div>
+
+      <div id="answers" class="answers" role="group" aria-label="Các đáp án"></div>
+      <p id="feedback" class="feedback" aria-live="polite"></p>
+    </section>
+
+    <section id="resultCard" class="result-card" aria-labelledby="resultTitle" hidden>
+      <div class="result-card__stars" aria-hidden="true">
+        <span>★</span><span>★</span><span>★</span>
+      </div>
+      <div class="result-card__mascot" aria-hidden="true">☁️</div>
+      <p class="result-card__eyebrow">HOÀN THÀNH</p>
+      <h2 id="resultTitle">Tuyệt vời quá!</h2>
+      <p>Bạn đã cùng những vì sao chinh phục đủ 12 câu hỏi.</p>
+
+      <div class="result-stats">
+        <div>
+          <span id="completedCount">12/12</span>
+          <small>Câu hoàn thành</small>
+        </div>
+        <div>
+          <span id="wrongCount">0</span>
+          <small>Lần chọn sai</small>
+        </div>
+      </div>
+
+      <button id="restartButton" class="restart-button" type="button">
+        <span aria-hidden="true">↻</span> Chơi lại
+      </button>
+    </section>
+
+    <footer>With <span aria-label="yêu thích">♥</span></footer>
+  </main>
+
+  <div id="celebrationLayer" class="celebration-layer" aria-hidden="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>
