@@ -124,10 +124,31 @@ const questions = [
       "Thuế hóa tất cả các hoạt động văn hóa truyền thống."
     ],
     correct: 1
+  },
+  {
+    question: "Việt Nam gia nhập tổ chức ASEAN trong khu vực khi nào?",
+    answers: [
+      "1995",
+      "1996",
+      "1993",
+      "1997"
+    ],
+    correct: 0
+  },
+  {
+    question: "Việt Nam trở thành thành viên chính thức của Tổ chức Thương mại Thế giới (WTO) khi nào?",
+    answers: [
+      "2007",
+      "2006",
+      "2005",
+      "2008"
+    ],
+    correct: 0
   }
 ];
 
 const elements = {
+  startCard: document.querySelector("#startCard"),
   quizCard: document.querySelector("#quizCard"),
   resultCard: document.querySelector("#resultCard"),
   questionText: document.querySelector("#questionText"),
@@ -142,6 +163,7 @@ const elements = {
   feedback: document.querySelector("#feedback"),
   wrongCount: document.querySelector("#wrongCount"),
   completedCount: document.querySelector("#completedCount"),
+  playButton: document.querySelector("#playButton"),
   restartButton: document.querySelector("#restartButton"),
   twinkleField: document.querySelector("#twinkleField"),
   celebrationLayer: document.querySelector("#celebrationLayer"),
@@ -162,6 +184,7 @@ let musicTimerId = null;
 let musicNoteIndex = 0;
 let isSoundEnabled = true;
 let musicVolume = 0.104;
+let hasQuizStarted = false;
 
 const musicNotes = [261.63, 329.63, 392, 523.25, 392, 329.63, 293.66, 392];
 
@@ -259,7 +282,7 @@ function updateSoundButton() {
 function toggleSound() {
   isSoundEnabled = !isSoundEnabled;
 
-  if (isSoundEnabled) {
+  if (isSoundEnabled && hasQuizStarted) {
     ensureAudio();
   } else {
     stopBackgroundMusic();
@@ -467,6 +490,18 @@ function createFinalCelebration() {
   createStarBurst(fakeTarget);
 }
 
+function startQuiz() {
+  hasQuizStarted = true;
+  currentQuestionIndex = 0;
+  wrongAttempts = 0;
+  isTransitioning = false;
+  elements.startCard.hidden = true;
+  elements.resultCard.hidden = true;
+  elements.quizCard.hidden = false;
+  ensureAudio();
+  renderQuestion();
+}
+
 function restartQuiz() {
   currentQuestionIndex = 0;
   wrongAttempts = 0;
@@ -477,16 +512,15 @@ function restartQuiz() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+elements.playButton.addEventListener("click", startQuiz);
 elements.restartButton.addEventListener("click", restartQuiz);
 elements.soundToggle.addEventListener("click", toggleSound);
 elements.volumeControl.addEventListener("input", updateMusicVolume);
-document.addEventListener("pointerdown", ensureAudio, { once: true });
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
     stopBackgroundMusic();
-  } else if (isSoundEnabled && audioContext) {
+  } else if (hasQuizStarted && isSoundEnabled && audioContext) {
     startBackgroundMusic();
   }
 });
 createTwinkles();
-renderQuestion();

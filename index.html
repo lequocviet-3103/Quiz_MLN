@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#8fd8ff">
-  <meta name="description" content="Quiz Kinh Tế Chính Trị với giao diện bầu trời pastel dễ thương.">
+  <meta name="description" content="Quiz Kinh Tế Chính Trị gồm 14 câu hỏi với giao diện bầu trời pastel dễ thương.">
   <title>Quiz Kinh Tế Chính Trị</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,14 +34,36 @@
         </div>
       </div>
       <h1>Quiz Kinh Tế <span>Chính Trị</span></h1>
-      <p>Chinh phục 12 câu hỏi cùng những vì sao!</p>
+      <p>Chinh phục 14 câu hỏi cùng những vì sao!</p>
     </header>
 
-    <section id="quizCard" class="quiz-card" aria-labelledby="questionText">
+    <section id="startCard" class="start-card" aria-labelledby="startTitle">
+      <div class="start-card__sparkles" aria-hidden="true">
+        <span>✦</span><span>★</span><span>✦</span>
+      </div>
+      <div class="start-card__mascot" aria-hidden="true">
+        <span class="start-card__cloud">☁</span>
+        <span class="start-card__star">★</span>
+      </div>
+      <p class="start-card__eyebrow">SẴN SÀNG CHƯA?</p>
+      <h2 id="startTitle">Cùng bắt đầu nào!</h2>
+      <p class="start-card__description">Chọn đáp án đúng, thu thập những vì sao và chinh phục trọn bộ câu hỏi nhé.</p>
+      <div class="start-card__info" aria-label="Thông tin bài quiz">
+        <span><strong>14</strong> câu hỏi</span>
+        <span><strong>20</strong> giây mỗi câu</span>
+      </div>
+      <button id="playButton" class="play-button" type="button">
+        <span class="play-button__icon" aria-hidden="true">▶</span>
+        <span>Bắt đầu chơi</span>
+      </button>
+      <small>Nhạc sẽ phát sau khi bạn nhấn Play</small>
+    </section>
+
+    <section id="quizCard" class="quiz-card" aria-labelledby="questionText" hidden>
       <div class="quiz-topbar">
         <div class="question-count">
           <span class="question-count__label">CÂU HỎI</span>
-          <strong><span id="currentQuestion">1</span><span class="question-count__divider">/</span><span id="totalQuestions">12</span></strong>
+          <strong><span id="currentQuestion">1</span><span class="question-count__divider">/</span><span id="totalQuestions">14</span></strong>
         </div>
 
         <div id="timer" class="timer" role="timer" aria-label="Còn 20 giây">
@@ -59,7 +81,7 @@
       <div class="progress" aria-label="Tiến trình bài quiz">
         <div class="progress__labels">
           <span>Tiến trình</span>
-          <span id="progressPercent">8%</span>
+          <span id="progressPercent">7%</span>
         </div>
         <div class="progress__track">
           <div id="progressBar" class="progress__bar"></div>
@@ -82,11 +104,11 @@
       <div class="result-card__mascot" aria-hidden="true">☁️</div>
       <p class="result-card__eyebrow">HOÀN THÀNH</p>
       <h2 id="resultTitle">Tuyệt vời quá!</h2>
-      <p>Bạn đã cùng những vì sao chinh phục đủ 12 câu hỏi.</p>
+      <p>Bạn đã cùng những vì sao chinh phục đủ 14 câu hỏi.</p>
 
       <div class="result-stats">
         <div>
-          <span id="completedCount">12/12</span>
+          <span id="completedCount">14/14</span>
           <small>Câu hoàn thành</small>
         </div>
         <div>
